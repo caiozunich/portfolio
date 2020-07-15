@@ -32,7 +32,7 @@ if ($_POST) { /* es postback */
         $mail->SMTPAuth = true;
         $mail->Host = "caiozunich@gmail.com"; // SMTP a utilizar. Por ej. mail.dominio.com.ar
         $mail->Username = "info@caiozunich.com.ar"; // Correo completo a utilizar
-        $mail->Password = "240124";
+        $mail->Password = "";
         $mail->Port = 25;
         $mail->From = "info@caiozunich.com.ar"; // Desde donde enviamos (Para mostrar)
         $mail->FromName = "Caio Valentin Zunich";
@@ -59,7 +59,6 @@ if ($_POST) { /* es postback */
         $mail->addAddress("caiozunich@gmail.com");
         $mail->Subject = "Recibiste un mensaje desde tu página web";
         $mail->Body = "Te escribió $nombre cuyo correo es $correo, con el asunto $asunto y el siguiente mensaje:<br><br>$mensaje";
-
         if (1==1) {
             header('Location: confirmacion-envio.php');
         } else {
@@ -140,8 +139,7 @@ if ($_POST) { /* es postback */
                                         </div>
                                     </div>
                                     <div class="my-2 text-center">
-                                         <a class="btn" href=""></a>
-                                         <button type="submit" class="btn">ENVIAR</button>
+                                      <button type="submit" class="btn">ENVIAR</button>
                                     </div>
                             </form>
                             </div>
