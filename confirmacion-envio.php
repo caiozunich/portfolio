@@ -1,4 +1,4 @@
-<?php $pg = "contacto" ;?>
+<?php $pg = "confirmacion" ;?>
 <!DOCTYPE html>
 <html lang="es">
 
