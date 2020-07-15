@@ -1,4 +1,77 @@
-<?php $pg="contacto";?>
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$pg = "contacto";
+
+include_once "PHPMailer/src/SMTP.php";
+include_once "PHPMailer/src/PHPMailer.php";
+$msg = "";
+
+function guardarCorreo($correo)
+{
+    $archivo = fopen("mails.txt", "a+");
+    fwrite($archivo, $correo . ";\n\r");
+    fclose($archivo);
+}
+
+if ($_POST) { /* es postback */
+
+    $nombre = $_POST["txtNombre"];
+    $correo = $_POST["txtCorreo"];
+    $asunto = $_POST["txtAsunto"];
+    $mensaje = $_POST["txtMensaje"];
+
+    if ($nombre != "" && $correo != "") {
+        guardarCorreo($correo);
+
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = "caiozunich@gmail.com"; // SMTP a utilizar. Por ej. mail.dominio.com.ar
+        $mail->Username = "info@caiozunich.com.ar"; // Correo completo a utilizar
+        $mail->Password = "240124";
+        $mail->Port = 25;
+        $mail->From = "info@caiozunich.com.ar"; // Desde donde enviamos (Para mostrar)
+        $mail->FromName = "Caio Valentin Zunich";
+        $mail->IsHTML(true);
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true,
+            ),
+        );
+
+        //Destinatario
+        $mail->addAddress($correo);
+        //$mail->addBCC("caiozunich@gmail.com");
+        $mail->Subject = "Contacto página web";
+        $mail->Body = "Recibimos tu consulta, <br>te responderemos a la brevedad.";
+        //  if(!$mail->Send()){
+        //     $msg = "Error al enviar el correo, intente nuevamente mas tarde.";
+        //   }
+        $mail->ClearAllRecipients(); //Borra los destinatarios
+
+        //Nosotros
+        $mail->addAddress("caiozunich@gmail.com");
+        $mail->Subject = "Recibiste un mensaje desde tu página web";
+        $mail->Body = "Te escribió $nombre cuyo correo es $correo, con el asunto $asunto y el siguiente mensaje:<br><br>$mensaje";
+
+        if (1==1) {
+            header('Location: confirmacion-envio.php');
+        } else {
+            $msg = "Error al enviar el correo, intente nuevamente mas tarde.";
+        }
+    } else {
+        $msg = "Complete todos los campos";
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,18 +98,21 @@
     </header>
                        
     <section id="contacto">
-        <div class="container">
-           <div class="row">
-                    <div class="col-12 py 5">
-                        <h1>¡Trabajemos juntos!</h1>
-                    </div>
-
+    <?php if (isset($msg) && $msg != ""): ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                <?php echo $msg; ?>
+                </div>
             </div>
-                <div class="row">
+        </div>
+        <?php endif;?>
+    
+                       <div class="row">
                     <div class="col-12">
                         <h2>Para mas detalles sobre mí<br>
                         trabajo podés ver mi <a href="https://www.linkedin.com/in/caio-zunich-411ba41a1/" target="_blank"> Linkedin</a>,<br>
-                        descargar mi <a href="file/cv-jesus-puerta.pdf" target="_blank">CV</a>  o mandarme<br>
+                        descargar mi <a href="file/cvcaio.pdf" target="_blank">CV</a>  o mandarme<br>
                         un <a href="#formulario"> mensaje</a>
                         </h2>
                     </div>
@@ -64,6 +140,7 @@
                                         </div>
                                     </div>
                                     <div class="my-2 text-center">
+                                         <a class="btn" href=""></a>
                                          <button type="submit" class="btn">ENVIAR</button>
                                     </div>
                             </form>

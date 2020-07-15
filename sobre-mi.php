@@ -30,10 +30,10 @@
                     <h1>Sobre mí</h1>
                     <h2>Nunca dejo de aprender, realizo capacitaciones, cursos para mantenerme actualizado en el desarrollo
                     </h2>
-                    <a href="file/cv-jesus-puerta.pdf" class="btn my-4" target="_blank">Descargar CV</a>
+                    <a href="file/cvcaio.pdf" class="btn my-4" target="_blank">Descargar CV</a>
                 </div>
                 <div class="col-sm-3 col-9 mx-5">
-                    <img src="images/jesus-puerta.jpg" alt="Jesús Ramón Puerta Gómez" title="Jesús Ramón Puerta Gómez"
+                    <img src="images/foto cv.jpg" alt="Caio Valentin Zunich" title="Caio Valentin Zunich"
                     class="img-fluid img-circle">
                 </div>
             </div>
