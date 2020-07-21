@@ -122,20 +122,20 @@ if ($_POST) { /* es postback */
                             <form action="" method="POST">
                                     <div class="row pt-5">
                                         <div class="col-sm-6 col-12 py-2">
-                                            <input type="text" placeholder="NOMBRE" class="form-control">
+                                            <input type="text" placeholder="NOMBRE" name="txtNombre" class="form-control">
                                         </div>
                                         <div class="col-sm-6 col-12 py-2">
-                                             <input type="email" placeholder="CORREO" class="form-control">
+                                             <input type="email" placeholder="CORREO" name="txtCorreo" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 pt-4">
-                                            <input type="text" placeholder="ASUNTO" class="form-control">
+                                            <input type="text" placeholder="ASUNTO" name="txtAsunto" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class=" col-12 pb-4 ">
-                                            <textarea placeholder="MENSAJE" class="form-control"></textarea>
+                                            <textarea placeholder="MENSAJE" name="txtMensaje" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="my-2 text-center">

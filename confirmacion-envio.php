@@ -29,7 +29,7 @@
             <section>
                 <div class="row py-5 ">
                     <div class="col-12">
-                        <h1>Gracias por contactarte<br> Soy Caio Zunich
+                        <h1>Gracias por <br>contactarte
                         </h1>
                         <h2>Te responderemos a la brevedad</h2>
                         
